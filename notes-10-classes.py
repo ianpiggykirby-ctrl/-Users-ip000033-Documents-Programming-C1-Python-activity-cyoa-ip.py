@@ -9,6 +9,7 @@ class Pokemon:
     def __init__(self):
         """Constructor"""
         self.name = ""
+        self.species = ""
         self.type = "normal"
         self.level = 1
         self.age = 0
@@ -20,6 +21,20 @@ class Pokemon:
             self.is_shiny = True
             print("This pokemon is shiny!✨✨✨")
 
+    def talk(self):
+        """Hear what the pokemon has to say
+        The pokemon says its species name"""
+        print(f'{self.name} says, "{self.species}".')
+
+    def stats(self):
+        """Display the states of the pokemon"""
+        print(f"----({self.species})-----------")
+        print(f"    Name: {self.name}")
+        print(f"    Type:  {self.type}")
+        print(f"    Age:   {self.age}")
+        print(f"    Level: {self.level}")
+        print("--------------------------------")
+
 
 if __name__ == "__main__":
     # Create a pokemon object
@@ -28,10 +43,12 @@ if __name__ == "__main__":
     print("Pokemon name:", pokemon_one.name)
     # Change the pokemon's properties
     pokemon_one.name = "Mew"
+    pokemon_one.species = "Pikachu"
     print("Pokemon name:", pokemon_one.name)
     # Create another pokemon object
     pokemon_two = Pokemon()
     pokemon_two.name = "Pikachu"
+    pokemon_two.species = "Pikachu"
     # Check to see if a value is a pokemon
     if pokemon_one == pokemon_two:
         print("They're the same.")
@@ -41,5 +58,12 @@ if __name__ == "__main__":
     if type(pokemon_one) is Pokemon:
         print(f"{pokemon_one.name} is a Pokemon.")
 
-    for _ in range(100):
-        Pokemon()
+        for _ in range(100):
+            Pokemon()
+
+        # Tell our pokemon to talk
+        pokemon_one.talk()
+        pokemon_two.talk()
+        # Display stats of pokemon_one
+        pokemon_one.stats()
+        pokemon_two.stats()
