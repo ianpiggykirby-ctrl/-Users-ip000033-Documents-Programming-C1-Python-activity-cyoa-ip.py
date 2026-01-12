@@ -39,13 +39,43 @@ class Mario(pygame.sprite.Sprite):
     def __init__(self):
         """Player sprite"""
         super().__init__()
-        self.image = pygame.image.load("assets/mario-snes.png")
+
+        # Two copies of image: right-facing and left-facing
+        self.image_right = pygame.image.load("assets/mario-snes.png")
+        self.image_right = pygame.transform.scale_by(self.image_right, 0.5)
+        self.image_left = pygame.transform.flip(self.image_right, True, False)
+        self.image = self.image_right
 
         self.rect = self.image.get_rect()
 
+        # Keep track of last x-coord
+        self.last_x = 0
+
+        # Mario's "Life"
+        self.health = 100
+
+    def decrease_health(self, mag: int) -> int:
+        """Decrease player's health by magnitude.
+        Returns:
+            current health that mario has after the change
+        """
+        self.health -= mag
+        return self.health
+
     def update(self):
-        """Have Mario follow the mouse"""
+        """Have Mario follow the mouse
+        Set the right Mario image based on where he's facing."""
         self.rect.center = pygame.mouse.get_pos()
+
+        # Mario faces right if and only if the previous x
+        # is less than the current x
+        if self.last_x < self.rect.x:
+            self.image = self.image_right
+        elif self.last_x > self.rect.x:
+            self.image = self.image_left
+
+        # Update the last_x
+        self.last_x = self.rect.x
 
 
 class Enermy(pygame.sprite.Sprite):
@@ -133,6 +163,7 @@ def game():
 
         # Keep the enemies inside the screen
         for enermy in enermy_sprites_group:
+            # x-axis and y-axis bounce
             if enermy.rect.left < 0 or enermy.rect.right > WIDTH:
                 enermy.vel_x = -enermy.vel_x
             if enermy.rect.top < 0 or enermy.rect.bottom > HEIGHT:
@@ -144,6 +175,14 @@ def game():
             print("-----")
             print("Mario has collided with a block!")
             print(blocks_collided)
+
+        # TODO: Mario collides with enemy
+        enemies_collided = pygame.sprite.spritecollide(
+            player, enermy_sprites_group, False
+        )
+        for enermy in enemies_collided:
+            # Decrease Mario's life by some number
+            print(player.decrease_health(1))
 
         # ------ DRAWING TO SCREEN
         screen.fill(WHITE)
