@@ -18,6 +18,7 @@ t.width(10)
 t.shape("arrow")  # leaf shape
 t.speed("fastest")
 
+<<<<<<< HEAD
 # Create a directionary of leaf colours
 LEAF_COLOURS = {
     "spring": "#efc3e6",
@@ -26,6 +27,8 @@ LEAF_COLOURS = {
     "winter": "#a9d2d5",
 }
 
+=======
+>>>>>>> 8c13b958d2fc8ed382c7c3d52e9d96bc919c88c8
 
 def draw_tree(level: int, branch_length: float):
     """Draw a tree recursively at a given level
@@ -81,7 +84,11 @@ def draw_tree(level: int, branch_length: float):
         t.backward(branch_length)
     else:
         # create a leaf
+<<<<<<< HEAD
         t.color(LEAF_COLOURS["summer"])
+=======
+        t.color(random.choice(["green", "forestgreen", "yellowgreen", "orange", "red"]))
+>>>>>>> 8c13b958d2fc8ed382c7c3d52e9d96bc919c88c8
         t.stamp()
         t.color("brown")
         return
@@ -95,6 +102,7 @@ def factorial(num: int) -> int:
         return 1
 
 
+<<<<<<< HEAD
 def fibonacci(num: int) -> int:
     """Returns the nth fibonacci number calculated recursively"""
     if num <= 2:
@@ -103,6 +111,8 @@ def fibonacci(num: int) -> int:
         return 1
 
 
+=======
+>>>>>>> 8c13b958d2fc8ed382c7c3d52e9d96bc919c88c8
 t.speed(0)
 draw_tree(4, 250)
 
@@ -110,8 +120,11 @@ print(factorial(1))  # 1
 print(factorial(4))  # 24
 print(factorial(101))  # SOME BIG NUM
 
+<<<<<<< HEAD
 print("\nFibonacci tests:")
 print(fibonacci(6))  # 8
 print(fibonacci(10))  # 55
+=======
+>>>>>>> 8c13b958d2fc8ed382c7c3d52e9d96bc919c88c8
 
 wn.exitonclick()
