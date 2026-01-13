@@ -67,6 +67,7 @@ class Squirtle(Pokemon):
         self.species = "Squirtle"
         self.type = "water"
         self.level = 1
+        self.has_sunglasses = True
 
     def water_gun(self):
         """Squirtle shoots water out of its mouth"""
@@ -75,6 +76,17 @@ class Squirtle(Pokemon):
     def bubble_beam(self):
         """Squirtle shoots bubble beam out of its mouth"""
         print(f"{self.name} used bubble beam!")
+
+
+class Mewtwo(Pokemon):
+    def __init__(self):
+        # call the constructor of the parent class
+        super().__init__()
+        self.name = "Mewtwo"
+        self.type = "Psychic"
+        self.species = "Mewtwo"
+        self.level = 1
+        self.age = 0
 
 
 class Snorlax(Pokemon):
@@ -92,6 +104,7 @@ class Snorlax(Pokemon):
 
     def stats(self):
         """Display the states of the pokemon"""
+        print("--------------------------------")
         print(f"    Name: {self.name}")
         print(f"    Type:  {self.type}")
         print(f"    Level: {self.level}")
@@ -137,6 +150,7 @@ if __name__ == "__main__":
         pokemon_two.dance()
 
         squirtle_one = Squirtle()
+        # display stats of Squirtle()
         squirtle_one.stats()
         # use .water_gun()
         squirtle_one.water_gun()
@@ -151,3 +165,8 @@ if __name__ == "__main__":
         snorlax_one.gluttony()
         # use .talk()
         snorlax_one.talk()
+
+        # Create a Mewtwwo object
+        pokemon_three = Mewtwo()
+        pokemon_three.stats()
+        pokemon_three.talk()
