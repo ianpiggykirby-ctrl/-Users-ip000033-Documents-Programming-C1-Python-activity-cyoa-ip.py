@@ -18,7 +18,6 @@ t.width(10)
 t.shape("arrow")  # leaf shape
 t.speed("fastest")
 
-<<<<<<< HEAD
 # Create a directionary of leaf colours
 LEAF_COLOURS = {
     "spring": "#efc3e6",
@@ -27,8 +26,6 @@ LEAF_COLOURS = {
     "winter": "#a9d2d5",
 }
 
-=======
->>>>>>> 8c13b958d2fc8ed382c7c3d52e9d96bc919c88c8
 
 def draw_tree(level: int, branch_length: float):
     """Draw a tree recursively at a given level
