@@ -17,14 +17,13 @@ GREY = (128, 128, 128)
 
 
 class Block(pygame.sprite.Sprite):
-    def __init__(self, colour: pygame.Color, width: int, height: int):
+    def __init__(self):
         """A block of any colour"""
         super().__init__()
 
         # Visual representation of our image
-        self.image = pygame.Surface((width, height))
-        # change the colour of self.image
-        self.image.fill(colour)
+        self.image = pygame.image.load("assets/0433de3a9dca4b9.png")
+        self.image = pygame.transform.scale_by(self.image, 0.10)
 
         # A Rect tells you two things:
         #   - how big the hitbox is (width, height)
@@ -168,7 +167,7 @@ def game():
     # Create 100 blocks
     # Randomly place them throughout the screen
     for _ in range(num_blocks):
-        block = Block(BLUE, 20, 10)
+        block = Block()
         # Choose a random position for it
         block.rect.centerx = random.randrange(0, WIDTH)
         block.rect.centery = random.randrange(0, HEIGHT)
@@ -214,7 +213,7 @@ def game():
             level += 1
 
             for _ in range(num_blocks):
-                block = Block(BLUE, 20, 10)
+                block = Block()
                 # Choose a random position for it
                 block.rect.centerx = random.randrange(0, WIDTH)
                 block.rect.centery = random.randrange(0, HEIGHT)
