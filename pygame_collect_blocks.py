@@ -15,7 +15,6 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 GREY = (128, 128, 128)
 
-
 class Block(pygame.sprite.Sprite):
     def __init__(self):
         """A block of any colour"""
@@ -24,7 +23,11 @@ class Block(pygame.sprite.Sprite):
         # Visual representation of our image
         self.image = pygame.image.load("assets/0433de3a9dca4b9.png")
         self.image = pygame.transform.scale_by(self.image, 0.10)
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> 7e6537be265b2c65b3fb119a130b24e85762f4b6
         # A Rect tells you two things:
         #   - how big the hitbox is (width, height)
         #   - where it is (x, y)
@@ -263,6 +266,7 @@ def game():
     # Display final score:
     print("Thanks for playing!")
     print("Final score is:", player.points)
+
 
     pygame.quit()
 
